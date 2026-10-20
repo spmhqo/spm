@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Content, Report, or Product</title>
+  <link rel="icon" href="spm.ico">
+  <style>
+    :root { --primary:#204d4f; --secondary:#426a6c; --accent:#739395; --border:#a9c1c2; --bg:#dbeeef; --paper:#fff; --ink:#1e2b2c; --radius:18px; --shadow:0 10px 30px rgba(32,77,79,.08); }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:var(--bg); line-height:1.5; }
+    .page-wrap { width:min(980px,calc(100% - 32px)); margin:auto; padding:42px 0 72px; }
+    .hero { padding-bottom:24px; margin-bottom:32px; border-bottom:1px solid var(--border); }
+    h1 { margin:0 0 8px; color:var(--primary); font-size:clamp(2rem,5vw,2.75rem); letter-spacing:-.045em; }
+    .subtitle { margin:0; color:var(--secondary); font-size:1.05rem; }
+    .quick-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .link-button, button { display:inline-flex; align-items:center; justify-content:center; border:1px solid transparent; border-radius:10px; padding:10px 16px; font:700 .9rem inherit; cursor:pointer; text-decoration:none; transition:transform .2s ease,background .2s ease; }
+    .link-button { color:#fff; background:var(--primary); }
+    .link-button:hover, button:hover { transform:translateY(-1px); }
+    .link-button.alt { background:var(--secondary); }
+    .section-title { margin:38px 0 14px; color:var(--primary); font-size:1.45rem; letter-spacing:-.025em; }
+    .section-note { margin:-8px 0 16px; color:var(--secondary); font-weight:700; }
+    .prompt-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(285px,1fr)); gap:18px; }
+    .prompt-card { overflow:hidden; background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); }
+    .card-head { display:flex; gap:12px; align-items:center; padding:17px 18px; background:#fcfdfe; border-bottom:1px solid var(--border); }
+    .step-badge { display:grid; place-items:center; min-width:38px; height:38px; padding:0 7px; border-radius:10px; background:var(--primary); color:#fff; font-size:.75rem; font-weight:800; }
+    .card-head h3 { margin:0; color:var(--primary); font-size:1rem; }
+    .card-body { padding:18px; }
+    label { display:block; margin-bottom:6px; color:var(--secondary); font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+    input { width:100%; height:43px; margin-bottom:13px; padding:9px 11px; border:1px solid var(--border); border-radius:9px; color:var(--ink); background:#fff; font:inherit; outline:none; }
+    input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(32,77,79,.1); }
+    .prompt-url { color:var(--primary); background:#f9fbfc; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.78rem; }
+    .button-row { display:flex; flex-wrap:wrap; gap:9px; }
+    .open-btn { color:#fff; background:var(--accent); }
+    .reset-btn { color:var(--primary); background:#fff; border-color:var(--border); }
+    footer { margin-top:54px; text-align:center; color:var(--secondary); font-size:.8rem; }
+    @media (max-width:520px) { .page-wrap { width:min(100% - 24px,980px); padding-top:28px; } .prompt-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <header class="hero">
+      <h1>Create Content, Report, or Product</h1>
+      <p class="subtitle">(as blog post or pdf)</p>
+      <div class="quick-links">
+        <a class="link-button" href="https://spmhqo.github.io/pp/" target="_blank" rel="noopener noreferrer">Product Plan</a>
+        <a class="link-button alt" href="https://spmhqo.github.io/fyb/" target="_blank" rel="noopener noreferrer">Find Your Buyers</a>
+      </div>
+    </header>
+
+    <section aria-labelledby="topic-heading">
+      <h2 class="section-title" id="topic-heading">TOPIC</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/sample-points.html"><div class="card-head"><span class="step-badge">Step#1</span><h3>Prompt#1</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/3/7-core-titles.html"><div class="card-head"><span class="step-badge">Step#2</span><h3>Prompt#2</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="content-heading">
+      <h2 class="section-title" id="content-heading">Compulsive Content</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/c-c.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#3</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/content-idea-genie-mh.html"><div class="card-head"><span class="step-badge">Step#4</span><h3>Prompt#4</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/c-c-f-u.html"><div class="card-head"><span class="step-badge">Step#5</span><h3>Prompt#5</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="product-heading">
+      <h2 class="section-title" id="product-heading">Product</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/pidea.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#6</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/content-idea-genie-mh.html"><div class="card-head"><span class="step-badge">Step#4</span><h3>Prompt#7</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/pcontent.html"><div class="card-head"><span class="step-badge">Step#6</span><h3>Prompt#8</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="report-heading">
+      <h2 class="section-title" id="report-heading">Report</h2>
+      <p class="section-note">Step#3:</p>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://sivahqpw.github.io/sr/tez.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#8 for Radical Report</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://sivahqpw.github.io/sr/tez2.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#9 for Radical Quick-Win Report</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://sivahqpw.github.io/sr/tez3.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#10 for Radical Warning Report</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://sivahqpw.github.io/sr/tez4.html"><div class="card-head"><span class="step-badge">Step#3</span><h3>Prompt#11 for Radical Secret Report</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/content-idea-genie-mh.html"><div class="card-head"><span class="step-badge">Step#4</span><h3>Prompt#12</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="bridge-heading">
+      <h2 class="section-title" id="bridge-heading">Bridge</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/crm/build-the-bridge.html"><div class="card-head"><span class="step-badge">—</span><h3>Prompt#13</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="promo-heading">
+      <h2 class="section-title" id="promo-heading">First Batch Promo</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/ice-cold-traffic-project.html"><div class="card-head"><span class="step-badge">—</span><h3>Prompt#14</h3></div><div class="card-body"></div></article>
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/ice-cold-traffic-light.html"><div class="card-head"><span class="step-badge">—</span><h3>Prompt#15</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="bengali-heading">
+      <h2 class="section-title" id="bengali-heading">Get Answer in Bengali:</h2>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="https://spmhqo.github.io/pp/gaib.html"><div class="card-head"><span class="step-badge">—</span><h3>Prompt#16</h3></div><div class="card-body"></div></article>
+      </div>
+    </section>
+
+    <footer>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</footer>
+  </main>
+
+  <script>
+    function refreshPromptBoxes() {
+      document.querySelectorAll('.prompt-card').forEach((card, index) => {
+        const prompt = card.dataset.prompt;
+        card.querySelector('.card-body').innerHTML = `
+          <label for="prompt-${index}">Prompt</label>
+          <input class="prompt-url" id="prompt-${index}" type="text" value="${prompt}" readonly aria-label="Prompt URL">
+          <label for="input-${index}">Your one-line input</label>
+          <input class="user-input" id="input-${index}" type="text" placeholder="Enter your input here" aria-label="Your one-line input">
+          <div class="button-row">
+            <a class="link-button open-btn" href="${prompt}" target="_blank" rel="noopener noreferrer">Open Prompt</a>
+            <button class="reset-btn" type="button" data-input="input-${index}">Reset</button>
+          </div>`;
+      });
+
+      document.querySelectorAll('.reset-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          document.getElementById(button.dataset.input).value = '';
+          refreshPromptBoxes();
+        });
+      });
+    }
+
+    refreshPromptBoxes();
+  </script>
+</body>
+</html>
