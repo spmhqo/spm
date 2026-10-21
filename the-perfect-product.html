@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Perfect Product</title>
+  <style>
+    :root {
+      --blue: #1265d8;
+      --deep-blue: #073f9b;
+      --navy: #082b63;
+      --soft-blue: #eef6ff;
+      --soft-blue-2: #dcecff;
+      --green: #18a83b;
+      --deep-green: #0d7d2b;
+      --soft-green: #edfbed;
+      --ink: #162238;
+      --muted: #667085;
+      --paper: #ffffff;
+      --page-bg: #f5f9ff;
+      --line: #dbe7f5;
+      --shadow: 0 18px 45px rgba(8, 43, 99, 0.12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(18, 101, 216, 0.13), transparent 30%),
+        linear-gradient(180deg, #f7fbff 0%, var(--page-bg) 55%, #fff 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .page-wrap {
+      width: min(950px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blue), var(--deep-blue));
+      color: #fff;
+      border-radius: 30px;
+      padding: 34px 34px 38px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "PERFECT";
+      position: absolute;
+      right: -26px;
+      top: -50px;
+      font-size: 138px;
+      font-weight: 900;
+      letter-spacing: -9px;
+      opacity: 0.08;
+      line-height: 1;
+    }
+
+
+    .perfect-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .diamond-mark {
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      transform: rotate(45deg);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #70b9ff 0%, #1687ff 42%, #0a4eaf 100%);
+      border: 2px solid rgba(255,255,255,0.78);
+      box-shadow: inset 0 0 18px rgba(255,255,255,0.28), 0 14px 28px rgba(0,0,0,0.20);
+    }
+
+    .diamond-mark span {
+      transform: rotate(-45deg);
+      font-size: 31px;
+      line-height: 1;
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.18));
+    }
+
+    .perfect-wordmark {
+      text-align: left;
+      line-height: 0.92;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      font-size: 29px;
+    }
+
+    .perfect-wordmark small {
+      display: block;
+      margin-top: 8px;
+      color: #8ff5a6;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+    }
+
+    .cash-accent {
+      color: #8ff5a6;
+    }
+
+    .hero-logo {
+      display: block;
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 14px;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,0.16));
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.34);
+      color: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero h1 {
+      margin: 18px auto 12px;
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 0.97;
+      letter-spacing: -0.05em;
+      max-width: 800px;
+    }
+
+    .subtitle {
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 780px;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.24);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section-card,
+    .followup-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section-card { overflow: hidden; }
+
+    .section-head {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 22px 24px;
+      background: linear-gradient(180deg, #fff, var(--soft-blue));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step-number {
+      flex: 0 0 auto;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      background: linear-gradient(180deg, var(--blue), var(--deep-blue));
+      box-shadow: 0 10px 20px rgba(18,101,216,0.20);
+    }
+
+    .section-head h2,
+    .followup-intro h2,
+    .launch-intro h2 {
+      margin: 0 0 5px;
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--navy);
+    }
+
+    .section-head p,
+    .followup-intro p,
+    .launch-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .section-body {
+      padding: 24px;
+    }
+
+    label {
+      display: block;
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #27405f;
+    }
+
+    select,
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #cbdbee;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    select:focus,
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(18,101,216,0.12);
+    }
+
+
+    select {
+      appearance: none;
+      min-height: 54px;
+      cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--navy) 50%), linear-gradient(135deg, var(--navy) 50%, transparent 50%);
+      background-position: calc(100% - 22px) 23px, calc(100% - 16px) 23px;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 46px;
+    }
+
+    .field-helper {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    textarea {
+      min-height: 210px;
+      resize: vertical;
+    }
+
+    .compact-textarea {
+      min-height: 180px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    button,
+    .link-button {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 800;
+      transition: transform 0.15s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    button:hover,
+    .link-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary-btn {
+      color: #fff;
+      background: linear-gradient(180deg, var(--blue), var(--deep-blue));
+      box-shadow: 0 12px 24px rgba(18,101,216,0.20);
+    }
+
+    .secondary-btn {
+      color: var(--navy);
+      background: #fff;
+      border: 1px solid #c9daee;
+      box-shadow: 0 8px 18px rgba(8,43,99,0.07);
+    }
+
+    .green-btn,
+    .copy-btn {
+      color: #fff;
+      background: #128422;
+      box-shadow: 0 12px 24px rgba(18,132,34,0.20);
+    }
+
+    .green-btn:hover,
+    .copy-btn:hover {
+      background: #0f701c;
+    }
+
+    .prompt-box { margin-top: 16px; }
+
+    .micro-note {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--soft-blue);
+      color: var(--navy);
+      font-size: 13px;
+      border: 1px solid #cfe0f5;
+    }
+
+    .arrow-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 14px 0;
+    }
+
+    .down-arrow {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(180deg, var(--blue), var(--deep-blue));
+      box-shadow: 0 14px 26px rgba(7,63,155,0.20);
+    }
+
+    .followup-intro,
+    .launch-intro {
+      margin: 28px 0 16px;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, var(--navy), var(--deep-blue));
+      border: 1px solid var(--deep-blue);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .followup-intro h2,
+    .launch-intro h2,
+    .followup-intro p,
+    .launch-intro p {
+      color: #FFFFFF;
+    }
+
+    .followup-grid,
+    .launch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card-top {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #f5f9ff);
+    }
+
+    .card-top h3 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      color: var(--navy);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    .card-top p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .card-body textarea {
+      min-height: 320px;
+      background: #fbfdff;
+    }
+
+    .launch-grid .card-body textarea {
+      min-height: 310px;
+    }
+
+    .footer {
+      margin: 26px 0 0;
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(12px);
+      background: #1f1f1f;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      z-index: 20;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .section-divider {
+      margin-top: 28px;
+    }
+
+    @media (max-width: 780px) {
+      .hero {
+        padding: 26px 22px 30px;
+        border-radius: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(30px, 10vw, 46px);
+      }
+
+      .section-head {
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      .section-body,
+      .followup-intro,
+      .launch-intro {
+        padding: 20px;
+      }
+
+      .followup-grid,
+      .launch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      button,
+      .link-button {
+        width: 100%;
+      }
+
+      .hero-logo {
+        max-width: 300px;
+      }
+    }
+
+    .logo-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 22px;
+      padding: 0;
+      background: transparent;
+    }
+
+    .top-logo {
+      display: block;
+      width: 300px;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="logo-header">
+
+    </header>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div class="step-number">1</div>
+        <div>
+          <h2>Discover 5 Perfect Product Ideas</h2>
+          <p>Enter a keyword, niche, topic, or URL. Get 5 distinct product opportunities, each with 5 strong product-title options so you can choose the one you want to build.</p>
+        </div>
+      </div>
+      <div class="section-body">
+
+        <label for="keywordInput" style="margin-top:14px;">Keyword, niche, or topic</label>
+        <input id="keywordInput" type="text" placeholder="Example: make money online, forex, weight loss, procrastination, free traffic, law of attraction" />
+        <div class="field-helper">Enter the market or subject you want to turn into a product. A URL takes priority when both are provided.</div>
+
+        <label for="urlInput" style="margin-top:14px;">Or use a URL</label>
+        <input id="urlInput" type="url" placeholder="Example: https://example.com/product-or-sales-page" />
+        <div class="field-helper">A URL tells ChatGPT to study the page, audience, offer, problems, and opportunities before creating the ideas.</div>
+
+        <div class="button-row">
+          <button class="primary-btn" onclick="buildStep1()">Generate Step 1 Prompt</button>
+          <button class="copy-btn" onclick="copyText('step1Prompt')">Copy Step 1 Prompt</button>
+          <a class="link-button secondary-btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Open ChatGPT</a>
+          <button class="secondary-btn" onclick="clearAll()">Clear All</button>
+        </div>
+        <div class="prompt-box">
+          <label for="step1Prompt">Step 1 Prompt</label>
+          <textarea id="step1Prompt" readonly></textarea>
+        </div>
+      </div>
+    </section>
+
+    <div class="arrow-wrap"><div class="down-arrow">↓</div></div>
+
+    <section class="section-card">
+      <div class="section-head">
+        <div class="step-number">2</div>
+        <div>
+          <h2>Automatically Outline Your Perfect Product</h2>
+          <p>Choose the product idea you want to create, pick your favorite title, optionally add the author or brand name, then paste the complete winning idea below. The software turns it into the complete build structure for the finished PDF.</p>
+        </div>
+      </div>
+      <div class="section-body">
+        <label for="titleInput">Chosen Product Title</label>
+        <input id="titleInput" type="text" placeholder="Paste the title you chose from the 5 options" />
+        <div class="field-helper">Choose your favorite title from the five options generated for the product idea you want to create.</div>
+
+        <label for="brandInput" style="margin-top:14px;">Optional Author or Brand Name</label>
+        <input id="brandInput" type="text" placeholder="Optional. Example: Mark Hess, Secret Advantage, GrowthLab" />
+        <div class="field-helper">Enter the author or brand name you want carried through the finished product and all launch assets. Leave blank if you don't want a name used.</div>
+
+        <label for="ideaInput" style="margin-top:14px;">Chosen Product Idea</label>
+        <textarea id="ideaInput" class="compact-textarea" placeholder="Paste the complete product idea here"></textarea>
+        <div class="field-helper">Paste the full Product Idea whenever possible. You can also paste an Enhanced Brainstormer idea or a Recommended Product Idea summary. Step 2 will normalize it automatically.</div>
+
+        <div class="button-row">
+          <button class="primary-btn" onclick="buildStep2()">Generate Step 2 Prompt</button>
+          <button class="copy-btn" onclick="copyText('step2Prompt')">Copy Step 2 Prompt</button>
+        </div>
+        <div class="prompt-box">
+          <label for="step2Prompt">Step 2 Prompt</label>
+          <textarea id="step2Prompt" readonly></textarea>
+        </div>
+      </div>
+    </section>
+
+    <div class="arrow-wrap"><div class="down-arrow">↓</div></div>
+
+    <div class="followup-intro section-divider">
+      <h2>Create Your Perfect Product</h2>
+      <p>Copy and paste the prompts in order. Each one builds the next piece of the finished product using the hidden structure created in Step 2.</p>
+    </div>
+
+    <section class="followup-grid">
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Product Notice</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow0" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow0')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Hook &amp; Setup</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow1" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow1')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Build The Perfect First Section</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow2" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow2')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Build The Perfect Second Section</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow3" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow3')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Build The Perfect Third Section</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow4" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow4')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>Bring It All Together</h3>
+        </div>
+        <div class="card-body">
+          <textarea id="follow5" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('follow5')">Copy Prompt</button></div>
+        </div>
+      </article>
+    </section>
+
+    <div class="arrow-wrap"><div class="down-arrow">↓</div></div>
+
+    <div class="launch-intro">
+      <h2>Launch &amp; Promote Your Perfect Product</h2>
+      <p>Keep copying and pasting. ChatGPT turns the finished product into a complete launch package with a matching 3D cover, sales material, Facebook graphics, emails, blog content, a product review, and more. The same exact cover carries through every promotional image so the whole offer looks like one polished campaign.</p>
+    </div>
+
+    <section class="launch-grid">
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>1. 3D Product Cover</h3>
+          <p>Creates the actual final product image</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch1" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch1')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>2. Product Description</h3>
+          <p>Headline plus 4 persuasive paragraphs</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch2" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch2')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>3. Sales Page Product Graphic/ Bonus Page Graphic</h3>
+          <p>Combines the official 3D product cover and strongest product benefits into one finished graphic</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch3" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch3')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>4. Long-Form Sales Letter</h3>
+          <p>Simple, clear, benefit-driven sales copy</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch4" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch4')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>5. Facebook Promo Graphic</h3>
+          <p>Uses the exact official 3D product cover in the final square image</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch5" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch5')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>6. Facebook Cover</h3>
+          <p>Uses the exact official 3D product cover in the final Facebook cover</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch6" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch6')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>7. Advertisement Infographic</h3>
+          <p>Uses the exact official 3D product cover in the final infographic</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch7" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch7')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>8. Two Facebook Posts</h3>
+          <p>Short written promo posts</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch8" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch8')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>9. Two Marketing Emails</h3>
+          <p>Each with 3 subject line options</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch9" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch9')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>10. 1500 Word SEO Blog Post</h3>
+          <p>Informational article with a CTA</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch10" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch10')">Copy Prompt</button></div>
+        </div>
+      </article>
+
+      <article class="followup-card">
+        <div class="card-top">
+          <h3>11. 1000 Word Product Review</h3>
+          <p>Credible review with strong positioning</p>
+        </div>
+        <div class="card-body">
+          <textarea id="launch11" readonly></textarea>
+          <div class="button-row"><button class="copy-btn" onclick="copyText('launch11')">Copy Prompt</button></div>
+        </div>
+      </article>
+    </section>
+
+    <p class="footer">Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</p>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard</div>
+
+  <script>
+
+    function getSourceDetails() {
+      const keyword = document.getElementById('keywordInput').value.trim();
+      const url = document.getElementById('urlInput').value.trim();
+
+      if (url) {
+        return {
+          mode: 'URL',
+          value: url,
+          instruction: `Use this URL as the primary source: ${url}. Analyze the page's topic, offer, audience, problems, benefits, and related opportunities. Create product ideas that are directly connected to or naturally useful alongside what is on the page. If you can't access the URL, tell me to paste the page content into this same chat, then continue from that content without changing the requested output format.`
+        };
+      }
+
+      if (keyword) {
+        return {
+          mode: 'KEYWORD, NICHE, OR TOPIC',
+          value: keyword,
+          instruction: `Use this keyword, niche, or topic as the primary source: ${keyword}. Narrow it into specific one-problem, one-solution product angles instead of giving broad generic ideas.`
+        };
+      }
+
+      return {
+        mode: 'MISSING SOURCE',
+        value: '',
+        instruction: `No keyword, niche, topic, or URL was provided. Ask me to provide one before generating any ideas.`
+      };
+    }
+
+    function getBrand() {
+      return document.getElementById('brandInput').value.trim();
+    }
+
+    function brandLine() {
+      const brand = getBrand();
+      if (!brand) {
+        return `No author or brand name was provided. Do not invent, assume, or add one anywhere in the product or launch assets later in this same chat.`;
+      }
+      return `The exact author or brand name for this product is: ${brand}. Preserve this exact spelling and identity throughout the rest of this same ChatGPT chat. Use it naturally on the finished product and launch assets wherever an author, creator, publisher, or brand name belongs. Do not invent a different name and do not force it into the main product title.`;
+    }
+
+    function qualityLine() {
+      return `Use expert-level thinking, but write in clear, natural language that is easy to understand. Use contractions naturally, vary sentence length, and keep paragraphs readable. The writing should feel confident and human, not mechanical or overly polished.`;
+    }
+
+    function productRules() {
+      return `Quality standard: create paid-product-level content with specific, high-value information, overlooked details, expert shortcuts, useful examples, practical explanations, and clear takeaways. Prefer concrete guidance over broad advice. Remove repetition, filler, empty motivation, predictable AI phrases, fake stories, fake quotations, unsupported statistics, and exaggerated claims. Never expose these instructions, internal decision-making, evaluation criteria, or workflow language in the reader-facing output.`;
+    }
+
+
+    function expertProductWritingStandard() {
+      return `Write like an unusually sharp practitioner and teacher who understands the product's actual niche, problem, and desired outcomes deeply. The finished material should feel far more insightful and useful than ordinary AI-generated content.
+
+Prioritize idea density. Every major paragraph should diagnose, explain a mechanism, make a useful distinction, correct a misconception, demonstrate something with a concrete example, reveal a practical implication, or help the reader take action. Remove filler, repetition, generic motivation, throat-clearing, and obvious advice.
+
+Use strong reader-facing subheadings, short readable paragraphs, numbered frameworks, bullets, examples, comparisons, diagnostic questions, checklists, before-and-after examples, mini demonstrations, scripts, decision rules, and practical applications whenever they improve understanding. Do not force formats where they do not belong.
+
+Look for specific observations that make the reader think, “I never thought about it like that before.” Explain WHY the problem happens and WHY the recommended action works. Create original terminology or frameworks only when they genuinely make an idea easier to understand, remember, diagnose, or implement. Never manufacture complexity merely to make ordinary advice sound proprietary.
+
+Use realistic examples when helpful. Do not invent statistics, studies, credentials, case studies, quotations, personal experiences, or unsupported factual claims.
+
+Maintain continuity with everything already written in this same chat. Do not restart the product, repeat earlier lessons, or steal material assigned to a later payoff. Preserve the exact branded product title, exact problem promise, and the three payoffs established earlier.`;
+    }
+
+    function noPromptRule() {
+      return `The finished product must be polished reader-facing content. Do not expose the SaaS instructions, creator workflow, behind-the-scenes generation prompts, internal notes, evaluation criteria, or instructions meant for the product creator. Reader-facing checklists, comparison tables, quick-reference lists, worksheets, scripts, templates, bracketed fields, fill-in-the-blank examples, mini audits, and AI prompts are allowed when they directly improve the product.`;
+    }
+
+    function cleanOutputRule() {
+      return `Return only the requested finished output. Do not preface it with commentary, summarize your process, explain your choices, mention the workflow, or add notes after it.`;
+    }
+
+    function imageQualityRule() {
+      return `Create the actual best-and-final image now with your image generation capabilities. Do not return an image prompt, design brief, plan, code, instructions, or written description. Render one polished final image only.
+
+VISUAL QUALITY STANDARD:
+- Make the finished image feel premium, dramatic, professionally art-directed, and immediately attention-grabbing without becoming cluttered or gimmicky
+- Use a strong visual hierarchy so the main hook, product title, product visual, and supporting details are understood in seconds
+- Use bold composition, confident typography, purposeful contrast, dimensional lighting, depth, texture, and topic-relevant visual storytelling where appropriate
+- Make every design choice feel intentional, cohesive, and sales-page ready rather than like a generic template
+- Keep the image visually rich while preserving clean spacing, legibility, balance, and a clear focal point
+- Avoid weak stock-layout styling, random decorative elements, tiny text, excessive copy, flat presentation, muddy contrast, awkward empty areas, and visual noise
+- Adapt the visual direction to the actual niche and product promise. Do not force the same style, icons, imagery, or layout onto every topic
+
+ACCURACY AND TRUST RULES:
+- Preserve the exact product title and author or brand spelling from this chat
+- Check all visible text for spelling, readability, spacing, cropping, and accuracy before finalizing
+- Keep important text and visuals inside safe margins
+- Do not invent testimonials, prices, statistics, guarantees, badges, awards, endorsements, or claims that were not established in this conversation
+- Do not add filler text, placeholder text, duplicated words, nonsense lettering, accidental logos, or unrelated visual elements`;
+    }
+
+    function campaignStandard() {
+      return `PRODUCT CAMPAIGN STANDARD:
+- Treat the exact branded product title, exact Problem / Tagline, Payoff 1, Payoff 2, and Payoff 3 established in Step 2 as the permanent campaign source of truth
+- Keep every launch asset centered on the same original problem and the same three promised outcomes
+- Preserve the distinction between the branded title, the problem-based tagline, and the three-payoff subtitle
+- Lead with recognizable problem awareness or a clearly desirable payoff, depending on what best fits the asset
+- Make the buyer immediately understand why the problem matters and what becomes better after using the product
+- Pull hooks, mechanisms, examples, distinctions, implementation details, and benefits only from material genuinely developed in the finished product
+- Sell the transformation and usefulness of the product rather than merely describing sections or chapters
+- Keep the offer focused, practical, easy to understand, and consistent with the one-problem, three-payoff product created earlier
+- Do not broaden the product into a larger promise, add a fourth payoff, guarantee results, fabricate proof, or introduce a different core topic
+- Use curiosity only when it is honestly supported by the finished product. Never force a secret, insider, hidden-information, or information-gap angle unless the actual product genuinely contains one.`;
+    }
+
+    function buildStep1() {
+      const source = getSourceDetails();
+      if (!source.value) {
+        alert('Enter a keyword, niche, topic, or URL first.');
+        return;
+      }
+
+      document.getElementById('step1Prompt').value = `You're the product-discovery engine inside The Perfect Product. You're an expert digital product strategist, direct-response product creator, buyer psychology analyst, micro-product architect, and product naming specialist.
+
+We are beginning a product-building workflow that will continue in this same ChatGPT chat. Your only job in this step is to discover strong product opportunities and establish the exact product language that later prompts will use.
+
+THE PERFECT PRODUCT turns a category, topic, keyword, niche, or URL into focused digital-product opportunities. Each idea must solve one recognizable problem and create three concrete desirable payoffs. Those exact three payoffs will later become the three major teaching parts of the finished product.
+
+SOURCE TYPE: ${source.mode}
+SOURCE: ${source.value}
+
+${source.instruction}
+
+Generate exactly 5 distinct, sales-ready digital product ideas from this source.
+
+Do the market and audience reasoning yourself. Do not ask me for additional information.
+
+==================================================
+CORE PRODUCT FORMULA
+==================================================
+
+Each product must be built around:
+
+ONE SPECIFIC PROBLEM
++
+THREE DISTINCT DESIRABLE PAYOFFS
+
+The problem creates recognition.
+The three payoffs create desire.
+The three payoffs must be substantial enough to become the three major teaching parts of a finished paid product.
+
+Do not create a broad course, a random bundle, or a collection of loosely related tips.
+
+==================================================
+PRODUCT OPPORTUNITY STANDARD
+==================================================
+
+Choose problems that are:
+- Immediately recognizable to people in this market
+- Specific enough to create a strong "that's me" reaction
+- Important, frustrating, costly, confusing, limiting, or desirable enough that someone would want a solution
+- Narrow enough for one focused digital product
+- Rich enough to support three genuinely useful and non-overlapping outcomes
+- Solvable or improvable through information, strategy, instruction, diagnosis, examples, exercises, frameworks, checklists, scripts, templates, comparisons, or implementation
+
+Make the 5 ideas meaningfully different. Do not create five versions of the same underlying product.
+
+Look across different opportunity types when useful:
+- Recurring frustration
+- Poor result
+- Mistake or self-defeating behavior
+- Unnecessary complexity
+- Missed opportunity
+- Uncertainty or indecision
+- Inefficiency
+- Bottleneck
+- Avoidable loss
+- Desired result blocked by a common obstacle
+- Something people want to stop, fix, simplify, improve, accelerate, choose, understand, or avoid
+
+==================================================
+PROBLEM / TAGLINE STANDARD
+==================================================
+
+Write the problem as a compelling reader-facing promise or tagline.
+
+Favor natural structures such as:
+- How to Stop [specific recurring problem]
+- How to [desired result] Without [major obstacle]
+- How to Fix [specific problem]
+- How to Stop [mistake] From [negative result]
+- How to Finally [desired outcome]
+- How to Get [result] Without [painful requirement]
+- How to Choose [right option] Without [decision pain]
+- How to Avoid [specific unwanted result]
+
+Do not mechanically force every idea into the same wording.
+
+The Problem / Tagline must:
+- Be specific and natural
+- Clearly communicate what changes for the buyer
+- Be strong enough to make the right buyer immediately understand why the product matters
+- Stay realistic and avoid guarantees, fake urgency, or unsupported claims
+
+==================================================
+3-PAYOFF STANDARD
+==================================================
+
+For each product, create exactly 3 payoffs.
+
+The payoffs must:
+- Be distinct, not three rewrites of the same benefit
+- Directly fulfill the Problem / Tagline
+- Be substantial enough to become complete teaching parts
+- Use concrete, desirable language rather than vague benefits
+- Work together as a complete solution
+- Form a logical progression whenever possible
+
+A strong progression is often:
+- Payoff 1: clarity, diagnosis, first correction, foundation, or immediate improvement
+- Payoff 2: implementation, leverage, practical result, or deeper improvement
+- Payoff 3: larger outcome, consistency, confidence, money, time, freedom, quality, or reliability
+
+Every payoff must contain enough substance to support approximately 1,000 words of genuinely useful finished content later without filler.
+
+Do not use vague phrases such as unlock your potential, achieve success, transform your life, master the art of, or unleash the power of.
+
+==================================================
+BRANDED TITLE STANDARD
+==================================================
+
+For EACH idea, generate exactly 5 branded product title options only after the problem and payoffs are clear.
+
+Each title should preferably be 2 or 3 words and should feel like a real digital product name.
+
+Explore different naming approaches:
+- Desired outcome
+- Transformation
+- Advantage
+- Mechanism
+- Process
+- Desirable state
+- Metaphor
+- Memorable combinations of familiar words
+
+The branded title does not need to explain the entire product because the Problem / Tagline and Combined Subtitle do that work.
+
+==================================================
+COMBINED SUBTITLE
+==================================================
+
+Combine the three exact payoffs into one natural subtitle.
+
+Use the exact meaning and wording of the three payoffs. Do not weaken, broaden, or replace them while combining them.
+
+==================================================
+QUALITY CONTROL
+==================================================
+
+Before responding, silently verify that each idea:
+- Solves one clear problem or pursues one clear desired result
+- Creates immediate recognition or desire
+- Has exactly 3 distinct payoffs
+- Has three payoffs substantial enough to support the entire finished product
+- Has a logical progression when possible
+- Has exactly 5 strong branded title choices
+- Is meaningfully different from the other four ideas
+- Feels specific enough to buy as a focused micro-product
+- Can support genuinely useful content without filler
+- Has no fabricated proof, statistics, guarantees, scarcity, or unsupported claims
+
+${qualityLine()}
+${cleanOutputRule()}
+
+Use this exact structure and include nothing else:
+
+## Product Idea #1
+
+### Branded Product Title Options
+1. [2-3 word title]
+2. [2-3 word title]
+3. [2-3 word title]
+4. [2-3 word title]
+5. [2-3 word title]
+
+### Problem / Tagline
+[Compelling problem-based promise]
+
+### Payoff 1
+[Exact first payoff]
+
+### Payoff 2
+[Exact second payoff]
+
+### Payoff 3
+[Exact third payoff]
+
+### Combined Subtitle
+[Payoff 1], [Payoff 2], and [Payoff 3]
+
+Repeat this exact structure for ## Product Idea #2, ## Product Idea #3, ## Product Idea #4, and ## Product Idea #5.
+
+AFTER all 5 complete product ideas, add this final section:
+
+# Top 5 Recommended Perfect Product Ideas
+
+Review all five product ideas you just created.
+
+For EACH product idea:
+- Choose the single strongest branded product name from that idea's 5 Branded Product Title Options
+- Do not invent a new title
+- Use the exact Problem / Tagline from that product idea
+- Use the exact Combined Subtitle from that product idea
+- Keep the recommendations in Product Idea #1 through Product Idea #5 order
+- Do not rank them against each other
+- Do not explain why you chose the name
+- Do not add commentary before or after the recommendations
+
+Use this exact format:
+
+## Recommended Product Idea #1
+
+### [Chosen Branded Product Title]
+
+[Exact Problem / Tagline]
+
+[Exact Combined Subtitle]
+
+Repeat through ## Recommended Product Idea #5.
+
+IMPORTANT WORKFLOW NOTE:
+The full Product Idea blocks above are the authoritative source because they contain the individually labeled Payoff 1, Payoff 2, and Payoff 3. The recommendation section is a quick-selection summary only.`;
+    }
+
+    function buildStep2() {
+      const chosenTitle = document.getElementById('titleInput').value.trim() || '[PASTE YOUR CHOSEN PRODUCT TITLE HERE]';
+      const chosenIdea = document.getElementById('ideaInput').value.trim() || '[PASTE THE COMPLETE CHOSEN PRODUCT IDEA HERE]';
+
+      document.getElementById('step2Prompt').value = `You're the master product architect for The Perfect Product. You're an expert information-product architect, developmental editor, subject-matter synthesizer, instructional designer, and unusually sharp practical teacher.
+
+Continue working in this same ChatGPT chat. Everything established here becomes the permanent source of truth for every product-writing and launch prompt that follows in this same conversation.
+
+${brandLine()}
+
+==================================================
+AUTHOR / BRAND CONTINUITY
+==================================================
+
+- If an author or brand name is provided above, preserve that exact spelling and identity throughout the rest of this chat.
+- Use it naturally where an author, creator, publisher, or brand name belongs, including the product notice, official 3D cover, promotional graphics, sales material, emails, blog content, and product review.
+- Do not replace it, shorten it, restyle it into a different name, or invent a second author or brand.
+- Do not force it into the main product title unless explicitly requested.
+- If no author or brand name was provided, do not invent one later.
+
+==================================================
+CHOSEN PRODUCT
+==================================================
+
+CHOSEN PRODUCT TITLE:
+${chosenTitle}
+
+CHOSEN PRODUCT IDEA:
+${chosenIdea}
+
+The chosen idea may have come from:
+1. The full Product Idea output from The Perfect Product Step 1
+2. The Enhanced Brainstormer
+3. The short Recommended Product Idea summary from Step 1
+
+Normalize whichever format was pasted into the same permanent product structure.
+
+SOURCE-OF-TRUTH RULE:
+- Preserve the chosen product title exactly.
+- Identify the exact Problem / Tagline.
+- Identify Payoff 1, Payoff 2, and Payoff 3 in their original order.
+- If the pasted idea includes individually labeled payoffs, use those exact payoffs.
+- If the pasted idea is only a Recommended Product Idea summary with a Problem / Tagline plus Combined Subtitle, recover the three payoff clauses from the Combined Subtitle without changing their wording or meaning.
+- Do not invent a fourth payoff.
+- Do not broaden the promise.
+- Do not substitute a different product angle.
+- Once normalized, treat the title, Problem / Tagline, Payoff 1, Payoff 2, Payoff 3, and author/brand identity as permanent for the rest of this chat.
+
+==================================================
+CORE PURPOSE
+==================================================
+
+Create the complete hidden intellectual architecture for the finished product now.
+
+The finished product must solve the stated problem by delivering the three promised payoffs in a clear progression.
+
+The later writing prompts will create the finished product from this outline. They will rely on this outline instead of asking the user to make additional structural decisions.
+
+The outline must contain exactly these 5 structural parts:
+
+1. Introduction + The Core Problem
+2. Payoff 1
+3. Payoff 2
+4. Payoff 3
+5. Putting It All Together + Closing
+
+Give each part a natural reader-facing title customized to the actual product. Do not use the structural labels above as the visible titles unless one genuinely happens to be the strongest natural title.
+
+==================================================
+MANDATORY FINISHED-CONTENT DEPTH
+==================================================
+
+Design the outline with enough unique substance to support these HARD MINIMUM finished word counts later:
+
+- Introduction + Core Problem: minimum 700 words
+- Payoff 1: minimum 1,000 words
+- Payoff 2: minimum 1,000 words
+- Payoff 3: minimum 1,000 words
+- Putting It All Together + Closing: minimum 600 words
+
+Total finished reader-facing product minimum: 4,300 words, not counting the copyright/disclaimer notice.
+
+Do not pad the outline to reach these minimums. Instead, give every part enough distinct mechanisms, distinctions, examples, diagnostics, implementation guidance, mistakes, and practical takeaways to support the required depth naturally.
+
+If a payoff is too thin to support its required 1,000-word section without repetition or filler, deepen the teaching architecture while staying inside the exact promise. Add useful mechanisms, decision rules, examples, diagnostics, implementation details, troubleshooting, comparisons, or applications. Do not change the payoff itself.
+
+==================================================
+PRODUCT PROGRESSION
+==================================================
+
+INTRODUCTION + CORE PROBLEM:
+- Make the reader deeply recognize the problem
+- Explain what it looks like in realistic situations
+- Explain why it happens
+- Correct important misconceptions
+- Show what it costs where relevant
+- Explain why common attempts fail, stall, or solve only the surface
+- Establish what must change
+- Introduce the three-payoff path without prematurely teaching the later sections
+
+PAYOFF 1:
+- Deliver the first meaningful transformation
+- Build the foundation the later payoffs depend on
+- Fully earn the exact first payoff
+- Avoid stealing material that belongs primarily in Payoff 2 or Payoff 3
+
+PAYOFF 2:
+- Build naturally on Payoff 1
+- Deliver a distinct second transformation
+- Show the leverage created by the first payoff
+- Avoid repeating the first section in different words
+
+PAYOFF 3:
+- Deliver the culminating or larger outcome
+- Show how the first two payoffs make it easier, stronger, or more reliable
+- Fully earn the exact third payoff
+- Do not turn it into the closing recap
+
+PUTTING IT ALL TOGETHER + CLOSING:
+- Integrate all three payoffs into one usable sequence
+- Tell the reader what to do first, next, what to watch for, how to recognize progress, and what to do when stuck
+- Reinforce the most important distinctions without re-teaching entire sections
+- End cleanly without introducing another major concept or fourth payoff
+
+==================================================
+INTELLECTUAL ARCHITECTURE STANDARD
+==================================================
+
+For every part, determine:
+- What the reader must understand
+- The mechanism explaining WHY the problem, obstacle, or result happens
+- Misconceptions worth correcting
+- Useful distinctions that sharpen understanding
+- Counterintuitive or surprising insights where legitimate
+- Diagnostic questions or self-checks where useful
+- Frameworks that simplify action where useful
+- Concrete realistic examples
+- Before-and-after examples where useful
+- Practical implementation steps
+- Decision rules where useful
+- Common mistakes and failure points
+- Troubleshooting where useful
+- What must not be repeated from other parts
+- How this part advances the reader toward the next payoff
+- The strongest takeaway the reader should leave with
+
+==================================================
+IDEA-DENSITY RULE
+==================================================
+
+Optimize for useful ideas, not word count.
+
+Every major subsection must diagnose, explain a mechanism, make a useful distinction, correct a misconception, demonstrate something with an example, reveal a practical implication, or help the reader take action.
+
+Avoid:
+- Generic motivational filler
+- Dictionary definitions
+- Broad history unless absolutely necessary
+- Repetition disguised as additional tips
+- Obvious advice with no explanation
+- Artificial proprietary language
+- Padding a simple idea into multiple sections
+- Reusing the same example to fill space
+
+Actively look for legitimate observations that make the reader think:
+"I've never thought about it like that before."
+
+Create original terminology, models, or frameworks only when they genuinely make an idea easier to understand, diagnose, remember, compare, or implement.
+
+==================================================
+OUTLINE FORMAT
+==================================================
+
+For each of the 5 parts, include only:
+
+- **Reader-Facing Title**
+- **Purpose**
+- **Key Ideas To Teach**
+- **Mechanisms / Why It Happens**
+- **Useful Distinctions Or Insights**
+- **Examples / Demonstrations**
+- **Practical Implementation**
+- **Mistakes / Failure Points**
+- **Immediate Takeaway**
+- **Natural Transition**
+
+OUTLINE DEPTH:
+- Introduction + Problem: 6 to 10 strong key ideas
+- Payoff 1: 8 to 12 strong key ideas
+- Payoff 2: 8 to 12 strong key ideas
+- Payoff 3: 8 to 12 strong key ideas
+- Putting It Together + Closing: 5 to 8 strong key ideas
+- Give enough specific direction that the later writing prompts can meet their hard minimum word counts without guessing, repetition, or filler
+- Keep this as an outline, not drafted prose
+- Keep all five parts distinct and progressive
+
+==================================================
+FINAL CHECK
+==================================================
+
+Before responding, silently verify:
+- The chosen branded title is preserved exactly
+- The exact author or brand identity is preserved when provided
+- The central problem is unmistakable
+- Payoff 1, Payoff 2, and Payoff 3 match the supplied promises in wording and meaning
+- Each payoff is deep enough to support at least 1,000 words of useful finished content
+- The Introduction supports at least 700 words without stealing the payoff material
+- The closing supports at least 600 words without becoming repetitive
+- Later parts build on earlier parts rather than repeating them
+- The complete product can naturally exceed the 4,300-word finished minimum
+- Nothing generic, fabricated, disconnected, repetitive, or overly broad remains
+
+${cleanOutputRule()}
+
+Return only the complete final product outline.`;
+    }
+
+    function setPrompt(id, text) {
+      document.getElementById(id).value = text;
+    }
+
+    function loadProductPrompts() {
+      setPrompt('follow0', `Create one polished all-in-one copyright, disclaimer, and change notice for the digital product we've been building in this same chat. This notice will be placed on the first page of the finished product.
+
+Use the exact branded product title already established earlier in this same chat and the exact author or brand identity established in Step 2 if one was provided. Preserve its spelling exactly. If none was provided, do not invent one or leave a placeholder.
+
+Adapt the disclaimer to the actual subject. Include only the professional-advice categories that are genuinely relevant to the topic.
+
+The finished notice should:
+- State that the product is protected and provided for the purchaser's or authorized recipient's personal use only
+- Prohibit unauthorized copying, sharing, uploading, reselling, sublicensing, republishing, modifying, translating, distributing, or transmitting
+- State that no ownership, resale, PLR, master resale, redistribution, or reproduction rights are granted unless separately provided in writing
+- Explain that the information is educational and informational and is not individualized professional advice where relevant
+- State that results are not guaranteed and depend on individual circumstances, decisions, effort, and implementation where relevant
+- Encourage readers to verify important or time-sensitive information
+- State that the author or publisher may revise, replace, or discontinue the product without notice and has no obligation to provide updates
+- Reasonably limit liability without exaggerated threats or fake legal citations
+
+Formatting rules:
+- Use a strong heading such as Copyright, Disclaimer & Change Notice
+- Write concise professional paragraphs suitable for the first page of a premium PDF
+- Do not include a year, date, placeholders, or process commentary
+- Return only the finished notice
+
+${cleanOutputRule()}`);
+
+      setPrompt('follow1', `We are now writing the finished product part by part in this same chat.
+
+Write the complete Introduction + Core Problem part now, following the first part of the final hidden outline and using only its custom reader-facing title.
+
+Purpose:
+- Make the reader deeply recognize the exact problem promised by the tagline
+- Show what the problem looks like in realistic situations
+- Explain the mechanism behind why it happens
+- Correct important misconceptions
+- Show what the problem costs in results, time, money, energy, confidence, consistency, or quality where relevant
+- Explain why common attempts to solve it often fail or stop too early
+- Establish what fundamentally needs to change
+- Introduce the three-payoff path naturally without prematurely teaching material assigned to the later parts
+
+MANDATORY WORD COUNT:
+- Write a minimum of 700 words of finished reader-facing content
+- This is a hard floor, not a target or suggestion
+- Silently count the finished words before returning the response
+- If the draft is under 700 words, continue writing useful, non-repetitive material until the minimum is met
+- Never stop early simply because the section feels complete
+
+Important rules:
+- Write only the finished first part
+- Use only the custom reader-facing title assigned in the outline
+- Do not label it Introduction, The Problem, Part 1, or Section unless naturally part of the custom title
+- Include concrete examples and diagnostic recognition moments
+- Make the reader repeatedly think, “That's exactly what's happening.”
+- Do not include creator notes, process commentary, word-count commentary, or internal instructions
+
+${expertProductWritingStandard()}
+${qualityLine()}
+${productRules()}
+${noPromptRule()}
+${cleanOutputRule()}`);
+
+      setPrompt('follow2', `Continue the product we've been creating in this same chat.
+
+Write the complete PAYOFF 1 part now, following the second part of the final hidden outline and using only its custom reader-facing title.
+
+This part must fully deliver the exact first payoff established earlier in this chat.
+
+Purpose:
+- Give the reader the first meaningful transformation promised on the cover
+- Explain the mechanisms and distinctions needed to achieve it
+- Diagnose what prevents this payoff now
+- Teach the practical shift, framework, process, or actions required
+- Use concrete examples, before-and-after comparisons, decision rules, checklists, or demonstrations where useful
+- Create the foundation that Payoff 2 can build on
+
+MANDATORY WORD COUNT:
+- Write a minimum of 1,000 words of finished reader-facing content
+- This is a hard floor, not a target or suggestion
+- Silently count the finished words before returning the response
+- If the draft is under 1,000 words, continue writing useful, non-repetitive material until the minimum is met
+- Never stop early simply because the section feels complete
+
+Important rules:
+- Write only the finished Payoff 1 part
+- Use only its custom reader-facing title from the outline
+- Do not label it Payoff 1, Main Part 1, or Section unless naturally part of the title
+- Do not repeat the introduction
+- Do not prematurely teach material assigned primarily to Payoff 2 or Payoff 3
+- The reader should finish this part noticeably more capable of achieving Payoff 1
+
+${expertProductWritingStandard()}
+${qualityLine()}
+${productRules()}
+${noPromptRule()}
+${cleanOutputRule()}`);
+
+      setPrompt('follow3', `Continue the product we've been creating in this same chat.
+
+Write the complete PAYOFF 2 part now, following the third part of the final hidden outline and using only its custom reader-facing title.
+
+This part must fully deliver the exact second payoff established earlier in this chat and build naturally on what the reader learned in Payoff 1.
+
+Purpose:
+- Deliver a distinct second transformation, not a rewrite of the first
+- Show how Payoff 1 creates leverage for Payoff 2
+- Explain the mechanisms, choices, skills, or implementation required
+- Include useful distinctions, examples, diagnostics, frameworks, checklists, demonstrations, or mini exercises where helpful
+- Address the mistakes that cause people to stall between the first and second payoff
+- Prepare the reader naturally for Payoff 3
+
+MANDATORY WORD COUNT:
+- Write a minimum of 1,000 words of finished reader-facing content
+- This is a hard floor, not a target or suggestion
+- Silently count the finished words before returning the response
+- If the draft is under 1,000 words, continue writing useful, non-repetitive material until the minimum is met
+- Never stop early simply because the section feels complete
+
+Important rules:
+- Write only the finished Payoff 2 part
+- Use only its custom reader-facing title from the outline
+- Do not label it Payoff 2, Main Part 2, or Section unless naturally part of the title
+- Do not repeat lessons, examples, or frameworks already covered unless a brief reference is essential
+- The reader should finish this part noticeably more capable of achieving Payoff 2
+
+${expertProductWritingStandard()}
+${qualityLine()}
+${productRules()}
+${noPromptRule()}
+${cleanOutputRule()}`);
+
+      setPrompt('follow4', `Continue the product we've been creating in this same chat.
+
+Write the complete PAYOFF 3 part now, following the fourth part of the final hidden outline and using only its custom reader-facing title.
+
+This part must fully deliver the exact third payoff established earlier in this chat. Treat it as the culminating outcome that Payoff 1 and Payoff 2 have prepared the reader to reach.
+
+Purpose:
+- Deliver the larger or culminating transformation promised by the third payoff
+- Connect the earlier work to this outcome without re-teaching it
+- Explain what changes when all three pieces work together
+- Show practical implementation, decision-making, optimization, troubleshooting, or maintenance where useful
+- Include concrete examples and realistic failure points
+- Leave the reader with a complete sense that the three-payoff promise has been fulfilled
+
+MANDATORY WORD COUNT:
+- Write a minimum of 1,000 words of finished reader-facing content
+- This is a hard floor, not a target or suggestion
+- Silently count the finished words before returning the response
+- If the draft is under 1,000 words, continue writing useful, non-repetitive material until the minimum is met
+- Never stop early simply because the section feels complete
+
+Important rules:
+- Write only the finished Payoff 3 part
+- Use only its custom reader-facing title from the outline
+- Do not label it Payoff 3, Main Part 3, or Section unless naturally part of the title
+- Do not turn this into the closing recap
+- Do not repeat earlier material except where a concise connection is necessary
+- The reader should finish this part noticeably more capable of achieving Payoff 3
+
+${expertProductWritingStandard()}
+${qualityLine()}
+${productRules()}
+${noPromptRule()}
+${cleanOutputRule()}`);
+
+      setPrompt('follow5', `Continue the product we've been creating in this same chat.
+
+Write the final Putting It All Together + Closing part now, following the fifth part of the final hidden outline and using only its custom reader-facing title.
+
+Purpose:
+- Do more than summarize what the reader already read
+- Show how Payoff 1 → Payoff 2 → Payoff 3 work together to solve the original problem
+- Convert the complete product into a simple implementation sequence
+- Tell the reader what to do first, what to do next, what to watch for, how to recognize progress, and what to do if they get stuck
+- Reinforce the most useful distinctions without repeating entire sections
+- End with clarity, momentum, and a satisfying sense of completion
+
+MANDATORY WORD COUNT:
+- Write a minimum of 600 words of finished reader-facing content
+- This is a hard floor, not a target or suggestion
+- Silently count the finished words before returning the response
+- If the draft is under 600 words, continue writing useful, non-repetitive material until the minimum is met
+- Never stop early simply because the section feels complete
+
+Important rules:
+- Write only the finished final part
+- Use only the custom reader-facing title assigned in the outline
+- Do not label it Putting It All Together, Closing, Conclusion, or Section unless naturally part of the custom title
+- Do not introduce a major new concept or fourth payoff
+- Prioritize an immediately usable action sequence over generic inspiration
+
+${expertProductWritingStandard()}
+${qualityLine()}
+${productRules()}
+${noPromptRule()}
+${cleanOutputRule()}`);
+    }
+
+    function loadLaunchPrompts() {
+      const title = document.getElementById('titleInput').value.trim() || '[FINAL PRODUCT TITLE]';
+      const brand = getBrand();
+      const brandInstruction = brand
+        ? `Author or brand name established in Step 2: ${brand}. Preserve this exact spelling and identity throughout every remaining launch asset in this same chat.`
+        : `No author or brand name was established in Step 2. Do not invent or add one later.`;
+
+      setPrompt('launch1', `CREATE A BRAND-NEW PREMIUM DIGITAL REPORT ECOVER IMAGE FROM TEXT ONLY.
+
+This is a TEXT-TO-IMAGE generation request.
+
+CRITICAL:
+- Generate a completely new image from scratch.
+- Do not edit, transform, restore, modify, or use any existing image.
+- Do not select or reference any prior image in this conversation.
+- Do not ask me to upload, identify, choose, or provide an image.
+- Do not require a visual target.
+- Use only the TEXT context already established in this same chat: the chosen branded product title, exact Problem / Tagline, niche, product promise, finished product content, and author or brand name if one was provided.
+- If the image system initially tries to treat this as an edit, retry it as a brand-new text-to-image generation request instead of asking me for an image.
+
+Your response to this prompt must be the actual newly rendered image itself.
+
+SOURCE-OF-TRUTH COVER TEXT:
+- Use the exact CHOSEN BRANDED PRODUCT TITLE established in Step 2 as the main title on the front cover.
+- Use the exact Problem / Tagline established in Step 2 as the ONLY subtitle/tagline on the front cover.
+- Before generating the image, locate the exact Problem / Tagline wording from the Step 2 source-of-truth product information already established earlier in this same chat.
+- Copy that Problem / Tagline verbatim, character-for-character in wording and meaning. Do not summarize it. Do not improve it. Do not shorten it. Do not create a new subtitle. Do not convert it into a benefit statement.
+- NEVER generate a replacement subtitle from the product context.
+- NEVER use an inferred subtitle such as “simple strategies,” “step-by-step,” “build a stronger future,” or any other newly written wording unless that exact wording is the actual Problem / Tagline already established in Step 2.
+- If you cannot confidently identify the exact Problem / Tagline text from the earlier chat context, STOP before image generation and ask me to paste the exact Problem / Tagline. Do not guess.
+- The branded product title must be the dominant text.
+- The exact Problem / Tagline must appear clearly as the supporting subtitle/tagline.
+- If an author or brand name was established in Step 2, use that exact spelling once in an appropriate secondary position.
+- If no author or brand name was established, do not invent one.
+
+Final product title: ${title}
+${brandInstruction}
+
+${imageQualityRule()}
+
+${campaignStandard()}
+
+MOCKUP TYPE AND SHAPE RULE:
+- Create a consistent premium digital report mockup.
+- The product must appear as a THIN VERTICAL PDF-STYLE REPORT, not a book.
+- Use a slightly curved softcover front, a narrow visible spine edge, visible white page depth on the outer side, realistic soft shadows, crisp edges, and a clean three-quarter studio angle.
+- Use a LEFT-FACING viewing angle. Left Facing means the front cover faces slightly toward the viewer's right, with the left-side spine visible.
+- Keep the same geometry every time: slim report body, curved front cover, narrow spine, visible page stack, and clean product-display proportions.
+- Place the product title clearly on the visible spine or side panel when logically visible.
+- The mockup must look like one clean premium digital report and nothing else.
+
+DO NOT MAKE IT LOOK LIKE:
+- a hardcover book
+- a paperback
+- a hardback
+- a magazine
+- a software box
+- a binder
+- a tablet
+- a flat poster
+- a folder
+- a thick workbook
+- a stack of products
+- a multi-item bundle
+
+ECOVER QUALITY STANDARD:
+- Create a jaw-dropping, attention-grabbing, premium report cover that immediately looks valuable, polished, collectible, and professionally art-directed
+- Make it visually strong enough to become the hero product image on a high-converting sales page
+- Build one bold visual concept around the exact niche, exact problem, desired transformation, and strongest visual idea supported by the finished product
+- Make the cover feel custom-made for THIS specific product rather than like a reusable template
+- Analyze the offer information already established in this chat and choose the strongest professional design direction for this exact offer
+- Base the design direction on the audience, promise, tone, price impression, niche expectations, and emotional hook
+- Use dramatic but controlled lighting, depth, dimensional effects, premium textures, strong contrast, crisp edges, and sophisticated visual hierarchy
+- Make the branded product title huge, unmistakable, and readable even when the image is viewed small
+- Make the exact Problem / Tagline clearly readable as the secondary subtitle without allowing it to compete with the title
+- Use topic-relevant imagery, symbols, atmosphere, patterns, or visual metaphors only when they strengthen the product promise
+- Make the actual imagery, tone, typography feel, visual symbolism, hierarchy, accent details, and overall theme match the offer context
+- Use confident typography with excellent spacing, alignment, readability, and visual balance
+- Make the physical mockup believable with realistic thickness, perspective, a curved softcover feel, a narrow spine, visible page depth, premium highlights, and natural shadow
+- Make the result feel bold, vibrant, creative, and visually memorable without becoming cluttered, cheesy, childish, or hard to read
+- The finished cover should create an immediate “I want that” visual reaction without relying on fake proof, clutter, or unrelated hype
+
+STRICT TEXT ACCURACY RULE:
+- The only required front-cover text is the exact branded product title, the exact Problem / Tagline, and the exact author or brand name only when one was established.
+- Do not invent, generate, rewrite, paraphrase, or substitute the subtitle/tagline.
+- If exact Problem / Tagline wording is unavailable, ask me for it before generating the image.
+
+STRICT NO-EXTRAS RULE:
+- Create exactly one clean mockup in the selected product format
+- Do not add companion products, duplicate covers, extra books, extra cards, devices, packaging, props, hands, people, scenes, shelves, rooms, desks, floating icons, or background objects
+- Do not invent product features, modules, bonuses, claims, statistics, testimonials, logos, certification seals, brand names, or extra cover text that was not provided
+- Do not add fake taglines, labels, badges, feature names, menu items, chapters, testimonials, or random text
+- Avoid gibberish, misspellings, distorted letters, unreadable microtext, or random filler copy
+
+BACKGROUND AND PRESENTATION:
+- Place the finished ecover mockup on a clean pure white studio background
+- The area BEHIND and AROUND the ecover must be solid pure white #FFFFFF and visibly remain white on all sides
+- Keep visible white canvas space around the entire product so it is obvious the ecover is sitting on a white background
+- Use realistic soft shadows under and behind the product only to ground it on the white background
+- Do not let the cover artwork, sky, scenery, lighting effects, or any other visual elements extend outside the physical ecover
+- Do not blend the ecover into a scenic backdrop
+- Do not add scenery, rooms, desks, gradients, props, patterns, textures, dark backgrounds, colored backgrounds, or environmental objects
+- Do not fill the entire image canvas with cover art or background imagery
+- The background outside the product must stay pure white #FFFFFF
+- Keep the entire report mockup comfortably inside the canvas with generous white space so nothing is cropped
+
+FINAL QUALITY CHECK BEFORE RENDERING:
+Silently verify that:
+1. The visible main title exactly matches the chosen branded product title from Step 2
+2. The visible subtitle/tagline matches the Problem / Tagline from Step 2 VERBATIM, with no rewritten or newly generated subtitle
+3. Any author or brand name exactly matches the identity established earlier
+4. The product is clearly a thin vertical PDF-style report mockup, not a hardcover book
+5. The report uses a left-facing three-quarter angle with a visible narrow spine and visible white page depth
+6. All visible words are spelled correctly
+7. The title is readable at thumbnail size
+8. The subtitle/tagline is readable and visually secondary to the title
+9. The design is clearly tailored to the product's niche, audience, promise, and emotional hook
+10. There is exactly one product mockup and no extra objects
+11. Nothing important is cropped
+12. The visible canvas behind and around the ecover is pure white #FFFFFF
+13. No cover artwork or scenery extends outside the physical product
+14. The final response is the actual rendered image and nothing else
+
+FINAL OUTPUT:
+Generate one best-and-final, production-ready premium digital report ecover image from scratch now using text-to-image generation only. Use no existing image as input or reference. Render the actual image directly in the chat. This generated image becomes the official product cover that every later launch graphic must preserve and reuse.`);
+
+      setPrompt('launch2', `Based on the finished product created in this same chat, write the best-and-final product description for the sales page.
+
+Use the exact official product title, exact Problem / Tagline, exact three payoffs, established author or brand name when provided, and the actual finished product content. Do not introduce a new angle that changes the product promise.
+
+${campaignStandard()}
+
+Include:
+- One compelling benefit-driven headline
+- Exactly 4 persuasive paragraphs
+
+PARAGRAPH PURPOSE:
+1. Make the intended buyer immediately recognize the exact problem or desired result and why it matters.
+2. Explain the useful shift, mechanism, distinction, or reason the problem persists using what the finished product actually teaches.
+3. Make the three promised payoffs feel concrete, connected, and desirable without turning the paragraph into a mechanical list.
+4. Position the product as the focused, practical way to understand and apply the complete solution, then end with a natural reason to get it.
+
+Important rules:
+- Write from the finished product, not from generic assumptions about the niche
+- Emphasize concrete outcomes, useful distinctions, practical application, and relief from the exact problem
+- Keep the writing clear, natural, specific, benefit-rich, and easy to follow
+- Use contractions where they fit naturally
+- Make the product feel useful, focused, desirable, and worth keeping
+- Do not invent proof, testimonials, statistics, prices, guarantees, scarcity, bonuses, or unsupported claims
+- Do not mention prompts, ChatGPT, the SaaS, or the creation process
+- Return only the finished headline and 4 paragraphs with no setup commentary or closing notes`);
+
+      setPrompt('launch3', `Create the actual finished sales page graphic/ bonus page graphic now using ChatGPT's image-generation capability.
+
+Generate the graphic as a polished image directly inside this chat, exactly like you generated the earlier standalone 3D product cover. Do not use Python, HTML, CSS, SVG, canvas, presentation software, or any other code-based design method.
+
+This graphic must use the SAME EXACT standalone 3D product cover created earlier in this same chat as the official product visual.
+
+If you can clearly access and reuse that earlier official 3D cover from this same chat, use it and preserve it exactly.
+If you are unsure, cannot reliably access it, cannot clearly identify it, or need the image file to preserve it accurately, STOP and ask me to upload the official cover image first before generating this graphic.
+
+Do not guess at the cover. Do not invent a different cover. Do not create a second cover design. Do not replace it with a generic book mockup. The ecover must remain clearly recognizable as the same official cover, preserving its title, subtitle, author name, artwork, colors, overall appearance, and 3D book presentation.
+
+Use the product description written immediately before this prompt to choose the strongest sales message.
+
+Final product title: ${title}
+${brandInstruction}
+
+${imageQualityRule()}
+
+COMPOSITION:
+- Use a wide 16:9 composition
+- Place the official 3D product cover prominently on the left
+- Keep the full ecover visible with comfortable space around it
+- Use the right side for one bold benefit-driven headline
+- Add one short supporting sentence beneath the headline
+- Add exactly 3 short benefit callouts
+- Keep every callout to approximately 3 to 7 words
+- Use large, readable typography with generous spacing
+- Keep all text comfortably inside the canvas
+- Leave clear space along every edge
+- Make the ecover and headline the two dominant visual elements
+- Make the final graphic suitable for either a sales page section or a bonus page section
+
+VISUAL DIRECTION:
+- Build the surrounding design from the official ecover's established colors, topic, visual atmosphere, and style
+- Create a cohesive campaign graphic rather than placing a plain text box beside the cover
+- Use dimensional lighting, subtle depth, polished visual effects, topic-relevant background details, and strong contrast
+- Make the design feel exciting, modern, substantial, and premium
+- Use visual imagery and atmosphere to communicate the benefits instead of relying on excessive text
+- Make it look like a professionally designed digital product sales graphic or bonus-page graphic, not a presentation slide, web banner template, or coded layout
+
+TEXT RULES:
+- Use the exact product title only where naturally needed
+- Include the author or brand name once when provided
+- Use one headline, one supporting sentence, and exactly 3 benefit callouts
+- Do not use paragraphs
+- Do not repeat the product title unnecessarily
+- Do not place text at the extreme bottom or edges
+- Carefully check spelling and readability
+
+IMPORTANT:
+Generate the finished graphic as an image directly in the chat. Do not provide code, instructions, a design specification, or a downloadable HTML-created graphic.
+
+Return only one finished production-ready sales-page/ bonus-page image.`);
+
+      setPrompt('launch4', `Continue in this same ChatGPT chat after the product, official title, finished content, 3D cover, and product description have already been completed.
+
+Write the complete best-and-final long-form sales letter for the finished product now.
+
+Use the exact product intelligence already established in this conversation:
+- Exact official product title
+- Exact Problem / Tagline
+- Exact Payoff 1, Payoff 2, and Payoff 3
+- Intended reader and recognizable situation
+- The real mechanisms, distinctions, examples, implementation details, mistakes, and practical takeaways taught in the finished product
+- The product description written earlier in this same chat
+- The exact author or brand identity when one was established in Step 2
+
+Do not rename the product, invent a brand, add a fourth payoff, or introduce a different promise.
+
+${campaignStandard()}
+
+SALES-LETTER GOAL:
+Make the right reader recognize the exact problem, understand why their current approach may not be producing the result they want, see the practical value of the three promised payoffs, and want the finished product as the focused solution.
+
+Write the sales letter in this natural progression:
+1. A strong, specific headline built around the exact problem, desired result, or strongest payoff
+2. A supporting subheadline that clarifies who it is for and what it helps them accomplish
+3. An opening that enters the reader's current situation without generic warm-up language
+4. A problem-recognition section that makes the frustration, cost, missed result, or obstacle feel specific and familiar
+5. A useful shift section explaining the mechanism, misconception, bottleneck, mistake, or distinction that helps the reader understand why the problem persists
+6. A natural introduction of the exact official product as the focused solution
+7. A clear explanation of the three-payoff path and how the parts work together
+8. A benefit-rich section showing what the buyer will understand, change, use, simplify, avoid, improve, or gain
+9. Strong curiosity bullets pulled from real insights, examples, distinctions, decision rules, scripts, checklists, or implementation details inside the finished product
+10. A practical-use section showing how the product can be consumed and applied without making unsupported ease or speed claims
+11. A who-this-is-for section grounded in the intended reader established earlier
+12. A value section explaining why having the complete focused solution may save time, effort, uncertainty, frustration, or avoidable mistakes
+13. A clear call to action tied directly to the original problem and three promised payoffs
+14. A concise closing that reinforces the strongest truthful reason to act
+
+COPY STANDARDS:
+- Write like an elite direct-response copywriter who fully understands the completed product, but keep the language clear enough for an eighth-grade reader
+- Use contractions naturally throughout
+- Use specificity, contrast, curiosity, emotional recognition, and practical value without forced cleverness
+- Make the sales letter feel human, confident, conversational, and highly readable
+- Use short paragraphs, purposeful subheads, varied sentence length, and strong transitions
+- Make every section earn its place by increasing desire, clarity, trust, or perceived usefulness
+- Pull the strongest hooks and details from the actual finished product rather than inventing generic sales language
+- Keep the one-problem, three-payoff positioning intact
+- Do not broaden the product into a larger promise than the finished product fulfills
+
+TRUTH RULES:
+- Do not invent testimonials, customers, case studies, personal experiences, statistics, research findings, credentials, endorsements, bonuses, prices, discounts, scarcity, deadlines, guarantees, refund policies, or income claims
+- Do not claim the reader will definitely achieve a result
+- Do not use fake urgency, false scarcity, manipulative fear, exaggerated hype, or unsupported superlatives
+- Do not mention prompts, this workflow, ChatGPT, or how the asset was created
+- Do not explain your process or add setup commentary
+
+Final output: return only the polished, ready-to-use long-form sales letter with clean formatting, strong headings, persuasive bullets, and a clear call to action.`);
+
+      setPrompt('launch5', `Create the actual finished Facebook promotional graphic now using ChatGPT's image-generation capability.
+
+Generate the graphic as a polished image directly inside this chat. Do not use Python, HTML, CSS, SVG, canvas, presentation software, or any other code-based design method.
+
+This graphic must use the SAME EXACT standalone 3D product cover created earlier in this same chat as the official product visual.
+
+If you can clearly access and reuse that earlier official 3D cover from this same chat, use it and preserve it exactly.
+If you are unsure, cannot reliably access it, cannot clearly identify it, or need the image file to preserve it accurately, STOP and ask me to upload the official cover image first before generating this graphic.
+
+Do not guess at the cover. Do not invent a different cover. Do not create a second cover design. Do not replace it with a generic mockup. The ecover must remain clearly recognizable as the same official cover, preserving its title, subtitle, author name, artwork, colors, overall appearance, and 3D book presentation.
+
+Final product title: ${title}
+${brandInstruction}
+
+${imageQualityRule()}
+
+COMPOSITION:
+- Create one square 1080 by 1080 Facebook promotional image
+- Make the official 3D ecover a large, unmistakable hero element
+- Use one dominant scroll-stopping hook
+- Add no more than one short supporting line
+- Include one short call to action only when it improves clarity
+- Keep all important text large and readable on mobile
+- Keep all essential content inside generous safe margins
+- Use one clear focal point and one clear conversion message
+
+VISUAL DIRECTION:
+- Build the surrounding design from the official ecover's established colors, topic, visual atmosphere, and style
+- Use one bold topic-relevant visual idea instead of icon piles or stock-photo collages
+- Use premium lighting, controlled depth, strong contrast, and directional composition
+- Make the graphic feel custom art-directed and campaign-ready
+- Make it look like a professionally generated paid-social image, not a coded social template or presentation slide
+
+TEXT RULES:
+- Keep copy minimal
+- Use the exact product title only where naturally needed
+- Include the author or brand name once when provided
+- Do not use bullet lists, paragraphs, badge spam, fake proof, or multiple competing hooks
+- Do not place text near the extreme edges
+- Carefully check spelling and readability
+
+IMPORTANT:
+Generate the finished graphic as an image directly in the chat. Do not provide code, instructions, a design specification, or a downloadable HTML-created graphic.
+
+Return only one finished production-ready square Facebook promotional image.`);
+
+      setPrompt('launch6', `Create the actual finished Facebook cover image now using ChatGPT's image-generation capability.
+
+Generate the cover as a polished image directly inside this chat. Do not use Python, HTML, CSS, SVG, canvas, presentation software, or any other code-based design method.
+
+This graphic must use the SAME EXACT standalone 3D product cover created earlier in this same chat as the official product visual.
+
+If you can clearly access and reuse that earlier official 3D cover from this same chat, use it and preserve it exactly.
+If you are unsure, cannot reliably access it, cannot clearly identify it, or need the image file to preserve it accurately, STOP and ask me to upload the official cover image first before generating this graphic.
+
+Do not guess at the cover. Do not invent a different cover. Do not create a second cover design. Do not replace it with a generic mockup. The ecover must remain clearly recognizable as the same official cover, preserving its title, subtitle, author name, artwork, colors, overall appearance, and 3D book presentation.
+
+Final product title: ${title}
+${brandInstruction}
+
+${imageQualityRule()}
+
+COMPOSITION:
+- Create one wide Facebook cover image
+- Keep the official ecover, exact product title, and main hook inside the mobile-safe center area
+- Use the outer edges only for supporting atmosphere, motion, texture, or background imagery
+- Make the official ecover a clearly visible hero product element
+- Use one strong campaign idea and one short supporting line at most
+- Keep the banner clean, spacious, and readable after desktop and mobile cropping
+- Keep all critical text and focal visuals away from the extreme edges
+
+VISUAL DIRECTION:
+- Build the surrounding design from the official ecover's established colors, topic, visual atmosphere, and style
+- Use cinematic composition, premium typography, polished depth, controlled lighting, and topic-relevant visual storytelling
+- Make the design feel like the hero banner for a premium digital product launch
+- Keep the campaign visually cohesive with the earlier ecover and promotional graphic
+- Make it look like a professionally generated cover image, not a coded header template or presentation slide
+
+TEXT RULES:
+- Keep copy tight and powerful
+- Use the exact product title as the main message anchor
+- Include the author or brand name once when provided
+- Do not use bullet lists, paragraphs, tiny text, scattered focal points, or critical details near the edges
+- Carefully check spelling and readability
+
+IMPORTANT:
+Generate the finished Facebook cover as an image directly in the chat. Do not provide code, instructions, a design specification, or a downloadable HTML-created graphic.
+
+Return only one finished production-ready Facebook cover image.`);
+
+      setPrompt('launch7', `Create the actual finished advertisement infographic now using ChatGPT's image-generation capability.
+
+Generate the infographic as a polished image directly inside this chat. Do not use Python, HTML, CSS, SVG, canvas, presentation software, or any other code-based design method.
+
+This graphic must use the SAME EXACT standalone 3D product cover created earlier in this same chat as the official product visual.
+
+If you can clearly access and reuse that earlier official 3D cover from this same chat, use it and preserve it exactly.
+If you are unsure, cannot reliably access it, cannot clearly identify it, or need the image file to preserve it accurately, STOP and ask me to upload the official cover image first before generating this graphic.
+
+Do not guess at the cover. Do not invent a different cover. Do not create a second cover design. Do not replace it with a generic mockup. The ecover must remain clearly recognizable as the same official cover, preserving its title, subtitle, author name, artwork, colors, overall appearance, and 3D book presentation.
+
+Final product title: ${title}
+${brandInstruction}
+
+${imageQualityRule()}
+
+COMPOSITION:
+- Create one vertical 1080 by 1350 promotional infographic
+- Use the top section for one strong hook, the exact product title, and the official 3D ecover
+- Use exactly 3 short information panels below the hero section
+- Give each panel one brief heading and one concise supporting line
+- Create a clear top-to-bottom reading path
+- Keep all text large enough to read on mobile
+- Use generous spacing and safe margins throughout
+- Make the ecover and main hook the dominant visual elements
+
+CONTENT FLOW:
+- Panel 1: the recognizable problem or missed opportunity
+- Panel 2: the key shift, mechanism, mistake, distinction, or practical insight that moves the reader toward the solution
+- Panel 3: the practical advantage, result, or next step
+
+VISUAL DIRECTION:
+- Build the entire design from the official ecover's established colors, topic, visual atmosphere, and style
+- Use premium editorial composition, connecting flow, confident typography, subtle depth, and topic-relevant visual reinforcement
+- Make it substantial enough to save and share without becoming crowded
+- Use visuals and atmosphere to communicate ideas instead of adding excessive text
+- Make it look like a professionally generated campaign infographic, not a coded checklist, chart template, or presentation slide
+
+TEXT RULES:
+- Use exactly 3 concise information panels
+- Do not use paragraphs, crowded charts, unsupported statistics, excessive icon rows, or disconnected boxes
+- Include the author or brand name once when provided
+- Keep all text away from the extreme edges
+- Carefully check spelling and readability
+
+IMPORTANT:
+Generate the finished infographic as an image directly in the chat. Do not provide code, instructions, a design specification, or a downloadable HTML-created graphic.
+
+Return only one finished production-ready vertical promotional infographic.`);
+
+      setPrompt('launch8', `Continue in this same ChatGPT chat using the finished product, exact official title, exact Problem / Tagline, exact three payoffs, intended reader, product description, and strongest product insights already established.
+
+Write 2 best-and-final Facebook promotional posts for the product.
+
+${campaignStandard()}
+
+Use two meaningfully different angles:
+
+POST 1: PROBLEM RECOGNITION
+- Open with a sharp first line that makes the intended reader recognize the exact problem, frustration, mistake, bottleneck, or missed result
+- Show one useful reason the problem persists using a real mechanism or distinction taught inside the product
+- Transition naturally to the exact product as the focused solution
+- Emphasize the payoffs most relevant to relieving that problem
+
+POST 2: DESIRED RESULT
+- Open with the result, relief, advantage, or improvement the reader wants
+- Show how the three-payoff path helps move them toward that result
+- Highlight specific useful elements from the actual product such as frameworks, examples, decision rules, scripts, checklists, diagnostics, comparisons, or implementation guidance when they genuinely exist
+- Make the product feel useful, focused, easy to understand, and worth keeping without making unsupported ease or speed claims
+
+For each post:
+- Start with a strong standalone hook that earns attention in the first one or two lines
+- Use the exact official product title
+- Write in a natural, conversational voice with contractions where they fit
+- Use short paragraphs and mobile-friendly spacing
+- Make the value understandable without requiring prior context
+- Include 3 to 5 concise benefit bullets only when bullets improve the post
+- End with one clear, low-friction call to action
+- Keep each post substantial enough to persuade but tight enough for Facebook
+
+Do not:
+- Use fake urgency, engagement bait, clickbait the product cannot satisfy, exaggerated hype, or robotic phrases
+- Invent testimonials, statistics, proof, prices, discounts, guarantees, scarcity, or personal experiences
+- Use the same opening, structure, benefits, or wording in both posts
+- Mention prompts, ChatGPT, or the creation process
+- Add hashtags unless they are genuinely relevant and useful; use no more than 3
+
+Final output format:
+## Facebook Post 1
+[Finished post]
+
+## Facebook Post 2
+[Finished post]
+
+Return only the two finished posts.`);
+
+      setPrompt('launch9', `Continue in this same ChatGPT chat using the finished product, exact official title, exact Problem / Tagline, exact three payoffs, intended reader, product description, and strongest product insights already established.
+
+Write 2 best-and-final promotional emails for the product.
+
+${campaignStandard()}
+
+Use two distinctly different persuasion angles:
+
+EMAIL 1: THE PROBLEM AND THE SHIFT
+- Make the reader recognize the exact problem or frustration quickly
+- Explain one important mechanism, mistake, misconception, bottleneck, or distinction from the finished product that changes how the reader sees the problem
+- Position the product as the focused way to understand and apply the complete solution
+- Tie the call to action directly to the most relevant payoff
+
+EMAIL 2: THE RESULT AND THE PATH
+- Lead with the desired result, relief, advantage, or improvement the reader wants
+- Show how Payoff 1, Payoff 2, and Payoff 3 create a logical path toward that result
+- Highlight specific useful material that genuinely exists in the product
+- Make the product feel practical, focused, valuable, and worth keeping
+
+For each email, provide:
+- 3 strong subject line options using different styles: direct benefit, curiosity, and problem/result recognition
+- 1 concise preview-text option that complements rather than repeats the subject line
+- A compelling opening that earns attention immediately
+- A clear, natural body built around one central idea
+- Specific benefits and useful details drawn from the actual product
+- A smooth transition to the exact official product title
+- One primary call to action
+- A concise closing or P.S. that reinforces the strongest reason to click without introducing fake urgency
+
+EMAIL STANDARDS:
+- Write like a skilled email marketer who knows the finished product deeply
+- Use contractions naturally throughout
+- Keep paragraphs short, readable, and conversational
+- Prioritize clarity, specificity, curiosity, practical value, and emotional recognition
+- Sell the exact problem-to-three-payoff transformation rather than merely describing the product's sections
+- Keep each email focused on one angle and one action
+- Make the two emails structurally and emotionally different
+
+Do not:
+- Invent testimonials, statistics, research, customers, credentials, personal stories, prices, discounts, deadlines, scarcity, guarantees, bonuses, or income claims
+- Use spammy language, deceptive subject lines, excessive punctuation, fake replies, or unsupported promises
+- Mention prompts, ChatGPT, or the creation process
+- Explain your process or add commentary outside the finished asset
+
+Final output format:
+## Email 1
+**Subject Line Options:**
+1. ...
+2. ...
+3. ...
+**Preview Text:** ...
+
+[Finished email]
+
+## Email 2
+**Subject Line Options:**
+1. ...
+2. ...
+3. ...
+**Preview Text:** ...
+
+[Finished email]
+
+Return only the completed emails.`);
+
+      setPrompt('launch10', `Continue in this same ChatGPT chat using the finished product, exact official title, exact Problem / Tagline, exact three payoffs, intended reader, established scope, and strongest expert-level content already created.
+
+Write the best-and-final SEO blog post that delivers genuine value and naturally promotes the product.
+
+${campaignStandard()}
+
+MANDATORY LENGTH:
+- Write a minimum of 1,500 words of finished article content, not counting the SEO metadata at the top
+- Silently verify the article meets or exceeds 1,500 words before returning it
+- If it is short, continue with useful, non-repetitive material until the minimum is met
+
+SEO STRATEGY:
+- Infer one primary search phrase from the exact problem, desired result, or strongest payoff using language the intended reader would realistically search
+- Infer 3 to 5 closely related secondary phrases and semantic topics
+- Use them naturally and sparingly. Do not keyword-stuff or write for a search engine at the expense of the reader
+- Match likely search intent by directly helping the reader understand or solve part of the exact problem
+- Stay within the product's established scope
+
+Include at the top:
+- SEO Title, approximately 50 to 60 characters when practical
+- Meta Description, approximately 140 to 160 characters when practical
+- Suggested URL Slug
+- Primary Search Phrase
+
+ARTICLE STRUCTURE:
+1. A strong H1 headline that clearly promises useful help with the exact problem or desired result
+2. An opening that immediately reflects the reader's situation and answers the core search intent early
+3. Clear H2 and H3 subheads that create a logical, skimmable progression
+4. A useful explanation of why the problem happens, why common approaches stall, or what important distinction improves understanding
+5. Practical teaching drawn from the finished product, including selected mechanisms, examples, distinctions, decision rules, comparisons, and applications while preserving enough value for the paid product
+6. At least one short checklist, comparison, quick-reference list, diagnostic, or decision framework when it naturally improves usefulness
+7. A section that connects the useful teaching to the three broader payoffs the complete product delivers
+8. A natural transition to the exact official product as the complete focused solution
+9. A clear call to action near the end
+10. A concise conclusion that reinforces the most important practical takeaway
+
+WRITING STANDARDS:
+- Make the article valuable enough to deserve search traffic even if the reader never buys
+- Write in a natural, expert, human voice with contractions where they fit
+- Use plain language, short readable paragraphs, concrete examples, and smooth transitions
+- Demonstrate expertise through practical distinctions and reasoning, not invented personal stories or credentials
+- Answer the likely search question early, then deepen the explanation
+- Keep the product promotion relevant and proportionate rather than turning the entire article into an advertisement
+- Use the exact official product title when introducing the product
+- Preserve the one-problem, three-payoff positioning
+
+Do not:
+- Invent studies, statistics, quotations, experts, case studies, firsthand experience, testimonials, results, prices, guarantees, or claims not established in the product
+- Add fake FAQs purely for keywords
+- Use robotic SEO phrases, filler, repetitive summaries, or generic introductions such as “In today's digital world”
+- Mention prompts, ChatGPT, or the creation process
+- Explain your process or add commentary outside the finished asset
+
+Final output: return only the complete SEO package and polished minimum-1,500-word blog post, ready to publish.`);
+
+      setPrompt('launch11', `Continue in this same ChatGPT chat using the finished product, exact official title, exact Problem / Tagline, exact three payoffs, intended reader, product description, and actual finished product content already established.
+
+Write the best-and-final product review-style article that helps a prospective buyer understand what the product does, what it contains, who it is for, and what practical value it offers.
+
+${campaignStandard()}
+
+MANDATORY LENGTH:
+- Write a minimum of 1,000 words of finished review content
+- Silently verify the review meets or exceeds 1,000 words before returning it
+- If it is short, continue with useful, non-repetitive material until the minimum is met
+
+REVIEW POSITIONING:
+Create a credible, positive, specific review-style assessment based entirely on the finished product's actual content and usefulness. Do not pretend to be an independent purchaser, customer, tester, or third-party reviewer. Do not claim personal results or firsthand use unless that experience was explicitly established in this conversation.
+
+Use this structure:
+1. A strong review headline featuring the exact official product title and its primary benefit
+2. A concise opening explaining the exact problem or desired result and why it matters to the intended reader
+3. A clear explanation of the product's central approach and how the three-payoff structure addresses the problem
+4. A “What It Covers” section describing the actual progression and most useful material without reproducing the entire product
+5. A “What Makes It Useful” section built around real mechanisms, distinctions, examples, frameworks, scripts, checklists, diagnostics, comparisons, or implementation guidance that genuinely exist
+6. A “Most Useful Takeaways” section highlighting specific practical lessons and applications
+7. A “Who It Is Best For” section grounded in the intended reader and relevant situations
+8. A “What To Expect” section explaining the depth, style, usability, scope, and realistic limits of the product
+9. A balanced assessment that notes any genuine scope limitation without inventing flaws or criticizing the product for intentionally excluded subjects
+10. A clear concluding assessment of the product's practical value
+11. A natural call to action near the end
+
+REVIEW STANDARDS:
+- Write in a natural, confident, human voice with contractions where they fit
+- Be specific enough that the review could only describe this product
+- Focus on practical value, clarity, usefulness, focus, and the three promised payoffs
+- Explain why the product may save the reader time, uncertainty, effort, or avoidable mistakes when that is genuinely supported
+- Keep the review positive and credible without pretending it is independent journalism
+- Use short paragraphs, useful subheads, and smooth transitions
+- Preserve the exact official title and any established author or brand name
+
+Do not:
+- Invent personal use, purchases, results, testimonials, customers, statistics, research, credentials, prices, bonuses, guarantees, refund terms, comparisons, or competitor claims
+- Claim the product is perfect, revolutionary, guaranteed to work, or objectively superior
+- Criticize it for not covering subjects excluded by its established scope
+- Mention prompts, ChatGPT, or the creation process
+- Explain your process or add commentary outside the review
+
+Final output: return only the polished minimum-1,000-word product review-style article, ready to publish.`);
+    }
+
+
+    function loadAllPrompts() {
+      loadProductPrompts();
+      loadLaunchPrompts();
+    }
+
+    async function copyText(id) {
+      const el = document.getElementById(id);
+      try {
+        await navigator.clipboard.writeText(el.value);
+        showToast('Copied to clipboard');
+      } catch (err) {
+        el.select();
+        document.execCommand('copy');
+        showToast('Copied to clipboard');
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1800);
+    }
+
+    function clearAll() {
+      document.getElementById('keywordInput').value = '';
+      document.getElementById('urlInput').value = '';
+      document.getElementById('brandInput').value = '';
+      document.getElementById('titleInput').value = '';
+      document.getElementById('ideaInput').value = '';
+      document.getElementById('step1Prompt').value = '';
+      document.getElementById('step2Prompt').value = '';
+      showToast('Dashboard cleared');
+    }
+
+    document.getElementById('brandInput').addEventListener('input', loadAllPrompts);
+    document.getElementById('titleInput').addEventListener('input', loadLaunchPrompts);
+
+    loadAllPrompts();
+  </script>
+</body>
+</html>
